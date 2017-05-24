@@ -98,5 +98,22 @@ angular.module('app').controller('appcomposercontroller',
                 var newWidget = angular.copy(widget.settings);
                 $scope.widgets.push(newWidget);
             }
+            
+            $scope.$watch('widgets', function () {
+                if ($scope.widgets.length > 0) {
+                    widgetresource.obj = $scope.widgets;
+                    console.log($scope.widgets);
+                    widgetresource.$add().then(function (data) {
+
+                        if (data.success) {
+                            console.log('widget saved');
+                        }
+                        else {
+
+                        }
+                    });
+                }
+                
+            }, true);
 
         }]);
