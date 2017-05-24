@@ -22,8 +22,8 @@ var site = [
 
 router.post('/site/Create/', function (req, res) {
    sitedb.put('site', site, function (err) {
-   if (err) console.log('gagal', err);
-   else console.log('success put data initialization');
+  if (err) res.json(500,err);
+    else res.json({success: true});
 });
 });
 
