@@ -91,6 +91,7 @@ angular.module('app').directive('wwaDashboard', ['$localStorage', 'widgetResourc
                         template: '<mvpperson></mvpperson>',
                         widgetSettings: {
                             id: 5003,
+                            selectedfilter :"",
                             templateUrl: '/javascripts/angularproject/dialog/mvp-person/mvp-person-dialog.html',
                             controller: 'mvp-persondialogcontroller'
                         }

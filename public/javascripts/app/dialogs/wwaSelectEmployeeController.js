@@ -15,6 +15,7 @@ angular.module('app').controller('wwaSelectEmployeeController',
         });
 
         $scope.saveSettings = function () {
+            console.log($scope.item);
             $scope.item.widgetSettings.id = $scope.selectedEmployee.id;
             $scope.$parent.selectedEmployee = $scope.selectedEmployee;
             $scope.$close();

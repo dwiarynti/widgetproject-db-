@@ -7,7 +7,8 @@
         return $resource("/api/locationsite/:action/:_id",
                { _id: '@_id' },
                {
-                 init: {method:'GET', params:{action:'getall'}}
+                 init: {method:'GET', params:{action:'getall'}},
+                 distinct: {method:'GET', params:{action:'distinct'}}
                })
     }
 }());

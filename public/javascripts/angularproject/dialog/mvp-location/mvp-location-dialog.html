@@ -10,15 +10,18 @@
     </div>-->
     <div class="form-group">
         <label>Filter by</label>
-        <select class="form-control" style="padding-left:0px; padding-right:0px;" ng-model="selectedfilterby">
+        <select class="form-control" style="padding-left:0px; padding-right:0px;" ng-model="selectedfilter.by">
             <option value="">Please Select</option>
             <option ng-repeat="obj in objmodel.FilterOption" value="{{obj.OptionName}}">{{obj.OptionName}}</option>
         </select>
     </div>
     <div class="form-group">
-        <label>{{selectedfilterby}}</label>
-        <select class="form-control" style="padding-left:0px; padding-right:0px;" ng-model="profile.type">
+        <label>{{selectedfilter.by}}</label>
+        <select class="form-control" style="padding-left:0px; padding-right:0px;" ng-model="selectedfilter.option">
             <option value="">Please Select</option>
+            <option ng-if="selectedfilter.by == 'Location'" ng-repeat="obj in filteroptions.locations">{{obj}}</option>
+            <option ng-if="selectedfilter.by == 'Zone'" ng-repeat="obj in filteroptions.zone">{{obj}}</option>
+            
         </select>
     </div>
 </div>
