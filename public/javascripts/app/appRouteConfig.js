@@ -12,7 +12,8 @@ angular.module('app').config(['$routeProvider', function ($routeProvider) {
         {
             url: '/locations',
             config: {
-                template: '<wwa-locations></wwa-locations>'
+                template: '<mvplocation></mvplocation>'
+                // template: '<wwa-locations></wwa-locations>'
             }
         },
         {

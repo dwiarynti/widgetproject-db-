@@ -31,7 +31,7 @@ angular.module('app').directive('wwaDashboard', ['$localStorage', 'widgetResourc
                         template: '<wwa-temperature></wwa-temperature>',
                         widgetSettings: {
                             id: 1000,
-                            templateUrl: 'app/dialogs/wwaSelectLocationTemplate.html',
+                            templateUrl: '/javascripts/app/dialogs/wwaSelectLocationTemplate.html',
                             controller: 'wwaSelectLocationController'
                         }
                     }
@@ -46,7 +46,7 @@ angular.module('app').directive('wwaDashboard', ['$localStorage', 'widgetResourc
                         template: '<wwa-inventory></wwa-inventory>',
                         widgetSettings: {
                             id: 1002,
-                            templateUrl: 'app/dialogs/wwaSelectLocationTemplate.html',
+                            templateUrl: '/javascripts/app/dialogs/wwaSelectLocationTemplate.html',
                             controller: 'wwaSelectLocationController'
                         }
                     }
@@ -61,7 +61,22 @@ angular.module('app').directive('wwaDashboard', ['$localStorage', 'widgetResourc
                         template: '<wwa-employee></wwa-employee>',
                         widgetSettings: {
                             id: 5000,
-                            templateUrl: 'app/dialogs/wwaSelectEmployeeTemplate.html',
+                            templateUrl: '/javascripts/app/dialogs/wwaSelectEmployeeTemplate.html',
+                            controller: 'wwaSelectEmployeeController'
+                        }
+                    }
+                },
+                {
+                    title: 'Location',
+                    settings: {
+                        sizeX: 5,
+                        sizeY: 3,
+                        minSizeX: 2,
+                        minSizeY: 2,
+                        template: '<mvplocation></mvplocation>',
+                        widgetSettings: {
+                            id: 5003,
+                            templateUrl: '/javascripts/app/dialogs/wwaSelectEmployeeTemplate.html',
                             controller: 'wwaSelectEmployeeController'
                         }
                     }
