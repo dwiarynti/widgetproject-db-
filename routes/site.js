@@ -21,13 +21,24 @@ var site = [
 ]
 
 router.post('/site/Create/', function (req, res) {
-   sitedb.put('listlocation', site, function (err) {
-   if (err) console.log('success put data initialization', err);
+   sitedb.put('site', site, function (err) {
+   if (err) console.log('gagal', err);
    else console.log('success put data initialization');
 });
-
-
 });
+
+router.get('/site/getall',function(req,res)
+{
+   
+    sitedb.get('site',function(err,locations)
+    {
+        if (err) res.json(500,err);
+        else 
+        
+        res.json({"obj": locations});
+    })
+});
+
 
 
 module.exports = router;
