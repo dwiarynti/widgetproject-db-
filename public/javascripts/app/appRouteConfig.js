@@ -21,6 +21,12 @@ angular.module('app').config(['$routeProvider', function ($routeProvider) {
             config: {
                 template: '<wwa-guides></wwa-guides>'
             }
+        },
+        {
+            url: '/appmanagement',
+            config: {
+                templateUrl: '/javascripts/angularproject/partialviews/appmanagement.html'
+            }
         }
     ];
 
