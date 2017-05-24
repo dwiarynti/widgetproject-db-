@@ -3,31 +3,29 @@ var router = express.Router();
 
 var db = require('./connection');
 
-var sitedb = require('site');
+var sitedb = db.sublevel('site');
 
 var site = [
     {
         id:"001",
-        sitename :""
+        sitename :"A"
     },
     {
-        id:"",
-        sitename :""
+        id:"002",
+        sitename :"B"
     },
     {
-        id:"",
-        sitename :""
+        id:"003",
+        sitename :"C"
     } 
 ]
 
 router.post('/site/Create/', function (req, res) {
-    console.log(req.body.obj);
-    widgetdb.put('listwidget', {
-      obj : req.body.obj
-    }, function (err) {
-      if (err) res.json(500, err)
-      else res.json({ success: true });
-    })
+   sitedb.put('listlocation', site, function (err) {
+   if (err) console.log('success put data initialization', err);
+   else console.log('success put data initialization');
+});
+
 
 });
 

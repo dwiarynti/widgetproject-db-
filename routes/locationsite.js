@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var db = require('./connection');
-var locationdb = require('locationsite');
+var locationdb = db.sublevel('locationsite');
 
 
 
