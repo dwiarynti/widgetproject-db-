@@ -8,6 +8,7 @@ var loc = [
     {
         id:"001",
         siteid:"001",
+        sitename: "A",
         locationname : "Anjungan A",
         zone : ""
 
@@ -15,12 +16,14 @@ var loc = [
     {
         id:"002",
         siteid:"001",
+        sitename: "A",
         locationname : "Anjungan B",
         zone : ""
     },
     {
         id:"003",
         siteid:"003",
+        sitename: "B",
         locationname : "Anjungan A",
         zone : ""
     }
