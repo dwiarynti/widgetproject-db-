@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var location = require('./routes/location')
 var widget = require('./routes/widget')
 var employee = require('./routes/employee')
+var locationsite = require('./routes/locationsite')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,6 +34,7 @@ app.use(cookieParser());
 app.use('/api',location);
 app.use('/api',widget);
 app.use('/api',employee);
+app.use('/api',locationsite);
 //
 
 
