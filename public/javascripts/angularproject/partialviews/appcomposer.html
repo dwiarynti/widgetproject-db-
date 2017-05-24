@@ -1,0 +1,34 @@
+<div ng-controller="appcomposercontroller">
+    <div class="common-widget">
+    <div class="common-heading">
+        <img class="common-icon" ng-src="/javascripts/images/employee.png" alt="employee" />
+        <span class="www-employee-title">Application Composer</span>
+    </div>
+    <div class="common-body">
+        <div class="row" style="margin:1%">
+
+            <div class="col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">WIDGET</div>
+                    <div class="panel-body">
+                        <div class="btn-group-vertical" style="width:100%">
+                            <button ng-repeat="widget in widgetDefinitions" type="button" class="btn btn-default" ng-click="addNewWidget(widget)">{{widget.title}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10" >
+                <div gridster="gridsterOpts">
+                    <ul>
+                        <li gridster-item="item" ng-repeat="item in widgets">
+                            <ps-widget-body>
+                            </ps-widget-body>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+</div>
