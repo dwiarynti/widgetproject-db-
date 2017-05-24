@@ -3,12 +3,11 @@ var router = express.Router();
 
 var db = require('./connection');
 var locationdb = db.sublevel('locationsite');
-
+var sitedb = db.sublevel('site');
 var loc = [
     {
         id:"001",
         siteid:"001",
-        sitename: "A",
         locationname : "Anjungan A",
         zone : ""
 
@@ -16,14 +15,12 @@ var loc = [
     {
         id:"002",
         siteid:"001",
-        sitename: "A",
         locationname : "Anjungan B",
         zone : ""
     },
     {
         id:"003",
         siteid:"003",
-        sitename: "B",
         locationname : "Anjungan A",
         zone : ""
     }
@@ -32,24 +29,59 @@ var loc = [
 router.get('/locationsite/getall/:_id',function(req,res)
 {
     var id = req.params._id;
-    locationdb.get('locationsite',function(err,locations)
+    var listitem = [];
+    var sitename = {};
+    sitedb.get('site',function(err,sites)
     {
-        if (err) res.json(500,err);
-        else 
-        var itemlist = [];
-        var index = 0;
-        for(var i = 0 ; i < locations.length; i++)
+        if(err) res.json(500,err);
+        else
+        for(var i = 0 ; i < sites.length; i++)
         {
-            var element = locations[i];
-            if(element.siteid == id)
-            itemlist.push(locations[i]);
-            index+=1;
+            var element = sites[i];
+            if(element.id == id)
+            sitename = element.sitename;
         }
-        if(index == locations.length)
+        if(sitename != "")
         {
-        res.json({"obj": itemlist});
+            locationdb.get('locationsite',function(err,locations)
+            {
+                 if(err) res.json(500,err);
+               
+                 else
+                  var index = 0;
+                  var item = [];
+                
+                 for(var x = 0 ; x < locations.length; x++)
+                 {
+                    var element = locations[index];
+                    if(element.siteid == id)
+                    {
+                        var obj =  {"sitename":"","id":"","locationname":"","zone":""};
+                        
+                        obj.sitename = sitename;
+                        obj.id =element.id;
+                        obj.siteid = element.siteid;
+                        obj.locationname = element.locationname;
+                        obj.zone = element.zone;
+                        item.push(obj);
+                    }
+                     index+=1;
+                 }
+                 if(index == locations.length)
+                 {
+                    res.json({"obj": item })
+                 }
+               
+
+            });
         }
-    })
+        else
+        {
+            res.json(500,err);
+        }
+    });
+
+
 });
 
 router.post('/locationsite/create',function(req,res)
