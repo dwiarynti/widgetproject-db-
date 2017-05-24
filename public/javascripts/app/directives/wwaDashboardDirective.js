@@ -76,8 +76,23 @@ angular.module('app').directive('wwaDashboard', ['$localStorage', 'widgetResourc
                         template: '<mvplocation></mvplocation>',
                         widgetSettings: {
                             id: 5003,
-                            templateUrl: '/javascripts/app/dialogs/wwaSelectEmployeeTemplate.html',
-                            controller: 'wwaSelectEmployeeController'
+                            templateUrl: '/javascripts/angularproject/dialog/mvp-location/mvp-location-dialog.html',
+                            controller: 'mvp-locationdialogcontroller'
+                        }
+                    }
+                },
+                {
+                    title: 'Person',
+                    settings: {
+                        sizeX: 5,
+                        sizeY: 3,
+                        minSizeX: 2,
+                        minSizeY: 2,
+                        template: '<mvpperson></mvpperson>',
+                        widgetSettings: {
+                            id: 5003,
+                            templateUrl: '/javascripts/angularproject/dialog/mvp-person/mvp-person-dialog.html',
+                            controller: 'mvp-persondialogcontroller'
                         }
                     }
                 }
