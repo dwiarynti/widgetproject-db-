@@ -185,4 +185,99 @@ router.get('/locationsite/distinct/:_id',function(req,res)
 
 
 });
+
+router.get('/locationsite/filter/:_id',function(req,res)
+{
+    var id = req.params._id;
+    var paramslocationname = req.body.locationname;
+    var paramszone = req.body.zone;
+    var listitem = [];
+    var sitename = {};
+    sitedb.get('site',function(err,sites)
+    {
+        if(err) res.json(500,err);
+        else
+        for(var i = 0 ; i < sites.length; i++)
+        {
+            var element = sites[i];
+            if(element.id == id)
+            sitename = element.sitename;
+        }
+        if(sitename != "")
+        {
+            locationdb.get('locationsite',function(err,locations)
+            {
+                 if(err) res.json(500,err);
+               
+                 else
+                  var index = 0;
+                  var item = [];
+                
+                
+                 for(var x = 0 ; x < locations.length; x++)
+                 {
+                    var element = locations[index];
+                    if(element != null)
+                    {
+
+                    if(paramslocationname != null)
+                    {
+                        if(element.siteid == id && element.locationname == paramslocationname)
+                        {
+                            var obj =  {"sitename":"","id":"","locationname":"","zone":""};
+                            obj.sitename = sitename;
+                            obj.id =element.id;
+                            obj.siteid = element.siteid;
+                            obj.locationname = element.locationname;
+                            obj.zone = element.zone;
+                            item.push(obj);
+                        }
+                    }
+                    else if(paramszone != null)
+                    {
+                        if(element.siteid == id && element.zone == paramszone)
+                        {
+                            var obj =  {"sitename":"","id":"","locationname":"","zone":""};
+                            obj.sitename = sitename;
+                            obj.id =element.id;
+                            obj.siteid = element.siteid;
+                            obj.locationname = element.locationname;
+                            obj.zone = element.zone;
+                            item.push(obj);
+                        }
+                    }
+                    else
+                    {
+                        if(element.siteid == id)
+                        {
+                            var obj =  {"sitename":"","id":"","locationname":"","zone":""};
+                            obj.sitename = sitename;
+                            obj.id =element.id;
+                            obj.siteid = element.siteid;
+                            obj.locationname = element.locationname;
+                            obj.zone = element.zone;
+                            item.push(obj);
+                        }
+                    }
+                    }
+                   
+                     index+=1;
+                 }
+                 if(index == locations.length)
+                 {
+                    res.json({"obj" : item})
+                 }
+               
+
+            });
+        }
+        else
+        {
+            res.json(500,err);
+        }
+    });
+
+
+});
+
 module.exports = router;
