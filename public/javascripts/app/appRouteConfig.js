@@ -33,6 +33,12 @@ angular.module('app').config(['$routeProvider', function ($routeProvider) {
             config: {
                 templateUrl: '/javascripts/angularproject/partialviews/appcomposer.html'
             }
+        },
+        {
+            url: '/prevpage/:id',
+            config: {
+                templateUrl: '/javascripts/angularproject/partialviews/previewpage.html'
+            }
         }
     ];
 

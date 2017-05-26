@@ -42,14 +42,17 @@
     <script src="/javascripts/angularproject/controllers/appcomposer-ctrl.js"></script>    
     <script src="/javascripts/angularproject/controllers/mvp-location-ctrl.js"></script>
     <script src="/javascripts/angularproject/controllers/mvp-person-ctrl.js"></script>
+    <script src="/javascripts/angularproject/controllers/prevpage-ctrl.js"></script>
 
 
 
     <!-- angular resource-->
+    <script src="/javascripts/app/services/passingdata.service.js"></script>
     <script src="/javascripts/app/services/employeeResource.js"></script>
     <script src="/javascripts/app/services/locationResource.js"></script>    
     <script src="/javascripts/app/services/widgetResource.js"></script>    
     <script src="/javascripts/app/services/locationsiteResource.js"></script>    
+    <script src="/javascripts/app/services/appmanagementResource.js"></script>    
     
     <script src="/javascripts/app/services/dataService.js"></script>
 
@@ -96,7 +99,7 @@
                           icon-file="/javascripts/images/kayak-icon-flat.png">
                 <ps-menu>
                     <ps-menu-item label="Dashboard" icon="fa-dashboard" route="dashboard"></ps-menu-item>
-                    <ps-menu-item label="Locations" icon="fa-location-arrow" route="locations"></ps-menu-item>
+                    <!--<ps-menu-item label="Locations" icon="fa-location-arrow" route="location"></ps-menu-item>-->
                     <ps-menu-item label="Raft Guides" icon="fa-user" route="guides"></ps-menu-item>
                     <ps-menu-group label="Equipment" icon="fa-gears">
                         <ps-menu-item label="Rafts" icon="fa-unlink" route="rafts"></ps-menu-item>

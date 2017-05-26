@@ -20,12 +20,15 @@
             <div class="col-md-10" >
                 <div gridster="gridsterOpts">
                     <ul>
-                        <li gridster-item="item" ng-repeat="item in widgets">
+                        <li gridster-item="item" ng-repeat="item in appmanagementobj.widget">
                             <ps-widget-body>
                             </ps-widget-body>
                         </li>
                     </ul>
                 </div>
+                <br>
+                <button ng-if="appmanagementobj.id == 0" class="btn btn-primary btn-lg" ng-click="Save()">Save</button>
+                <button ng-if="appmanagementobj.id != 0" class="btn btn-primary btn-lg" ng-click="Update()">Update</button>
             </div>
         </div>
 

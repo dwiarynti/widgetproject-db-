@@ -1,7 +1,10 @@
 angular.module('app').controller('appcomposercontroller',
-    ['$scope','widgetResource',
-        function ($scope, widgetResource) {
+    ['$scope', '$window','widgetResource', 'passingdataservice', 'appmanagementResource',
+        function ($scope, $window, widgetResource, passingdataservice, appmanagementResource) {
+            $scope.appmanagementobj={};
             var widgetresource = new widgetResource();
+            var appmanagementresource = new appmanagementResource();
+
             $scope.gridsterOpts = {
                 columns: 12,
                 margins: [20, 20],
@@ -66,6 +69,7 @@ angular.module('app').controller('appcomposercontroller',
                         template: '<mvplocation></mvplocation>',
                         widgetSettings: {
                             id: 5003,
+                            selectedfilter:{by:"", option:""},
                             templateUrl: '/javascripts/angularproject/dialog/mvp-location/mvp-location-dialog.html',
                             controller: 'mvp-locationdialogcontroller'
                         }
@@ -88,32 +92,56 @@ angular.module('app').controller('appcomposercontroller',
                     }
                 }
             ];
-            $scope.widgets = [];
-
-            widgetresource.$getAll({}, function (data) {
-                $scope.widgets = data.obj.obj;
-            });
+            $scope.appmanagementobj = passingdataservice.appmanagementobj;
+            console.log(passingdataservice.appmanagementobj);
+            // widgetresource.$getAll({}, function (data) {
+            //     $scope.appmanagementobj.widget = data.obj.obj;
+            //     console.log($scope.appmanagementobj.widget);
+            // });
 
             $scope.addNewWidget = function (widget) {
                 var newWidget = angular.copy(widget.settings);
-                $scope.widgets.push(newWidget);
+                $scope.appmanagementobj.widget.push(newWidget);
+            }
+
+            $scope.Save = function(){
+                appmanagementresource.pagename = $scope.appmanagementobj.pagename;
+                appmanagementresource.pagestatus = $scope.appmanagementobj.pagestatus;
+                appmanagementresource.widget = $scope.appmanagementobj.widget;
+                console.log(appmanagementresource);
+                appmanagementresource.$create(function(data){
+                    $window.alert("Data saved successfully");
+                    console.log(data);
+                });
+
+            }
+
+            $scope.Update = function(){
+                appmanagementresource.id = $scope.appmanagementobj.id;
+                appmanagementresource.pagename = $scope.appmanagementobj.pagename;
+                appmanagementresource.pagestatus = $scope.appmanagementobj.pagestatus;
+                appmanagementresource.widget = $scope.appmanagementobj.widget;
+                appmanagementresource.$update(function(data){
+                    $window.alert("Data saved successfully");
+                    console.log(data);
+                });
             }
             
-            $scope.$watch('widgets', function () {
-                if ($scope.widgets.length > 0) {
-                    widgetresource.obj = $scope.widgets;
-                    console.log($scope.widgets);
-                    widgetresource.$add().then(function (data) {
+            // $scope.$watch('widgets', function () {
+            //     if ($scope.appmanagementobj.widget.length > 0) {
+            //         widgetresource.obj = $scope.appmanagementobj.widget;
+            //         console.log($scope.appmanagementobj.widget);
+            //         widgetresource.$add().then(function (data) {
 
-                        if (data.success) {
-                            console.log('widget saved');
-                        }
-                        else {
+            //             if (data.success) {
+            //                 console.log('widget saved');
+            //             }
+            //             else {
 
-                        }
-                    });
-                }
+            //             }
+            //         });
+            //     }
                 
-            }, true);
+            // }, true);
 
         }]);

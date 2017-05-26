@@ -13,29 +13,29 @@
                 <thead>
                     <tr>
                         <th style="width: 11%;">Page Name</th>
-                        <th style="width: 11%;">Page Status</th>
+                        <th style="width: 11%;">Page pagestatus</th>
                         <th style="width: 11%;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="pageobj in PageList">
-                        <td ng-if="pageobj.editmode == false">{{pageobj.PageName}}</td>
+                        <td ng-if="pageobj.editmode == false">{{pageobj.pagename}}</td>
                         <td ng-if="pageobj.editmode == true">
-                            <input type="text" placeholder="Page Name" class="form-control col-md-6" ng-model="pageobj.PageName">
+                            <input type="text" placeholder="Page Name" class="form-control col-md-6" ng-model="pageobj.pagename">
                         </td>
 
-                        <td ng-if="pageobj.Status == true && pageobj.editmode == false">Enable</td>
-                        <td ng-if="pageobj.Status == false && pageobj.editmode == false">Disable</td>
+                        <td ng-if="pageobj.pagestatus == true && pageobj.editmode == false">Enable</td>
+                        <td ng-if="pageobj.pagestatus == false && pageobj.editmode == false">Disable</td>
 
                         <td ng-if="pageobj.editmode == true">
-                            <input type="radio" name="statustype_{{pageobj.id}}" ng-model="pageobj.Status" data-ng-value="true" /> Enable
-                            <input type="radio" name="statustype_{{pageobj.id}}" ng-model="pageobj.Status" data-ng-value="false"/> Disable
+                            <input type="radio" name="pagestatustype_{{pageobj.id}}" ng-model="pageobj.pagestatus" data-ng-value="true" /> Enable
+                            <input type="radio" name="pagestatustype_{{pageobj.id}}" ng-model="pageobj.pagestatus" data-ng-value="false"/> Disable
                         </td>
 
 
                         <td ng-if="pageobj.editmode == false">
                             <a ng-click="Edit(pageobj)" class="link" style="cursor: pointer">Edit</a> |
-                            <a ng-click="openDetail()" class="link" style="cursor: pointer">Compose</a>
+                            <a ng-click="ComposePage(pageobj)" class="link" style="cursor: pointer">Compose</a>
                         </td>
 
                         <td ng-if="pageobj.editmode == true && pageobj.id != 0">
@@ -45,7 +45,7 @@
 
                         <td ng-if="pageobj.editmode == true && pageobj.id == 0">
                             <!--<a ng-click="Save(pageobj)" class="link" style="cursor: pointer">Save</a>-->
-                            <a ng-click="openDetail()" class="link" style="cursor: pointer">Compose</a> |
+                            <a ng-click="ComposePage(pageobj)" class="link" style="cursor: pointer">Compose</a> |
                             <a ng-click="turnoffaddmode($index)" class="link" style="cursor: pointer">Cancel</a>
                         </td>
                     </tr>
