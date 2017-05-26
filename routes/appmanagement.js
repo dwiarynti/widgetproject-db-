@@ -41,8 +41,16 @@ router.post('/appmanagement/create',function(req,res)
             {
                 if(err) res.json(500,err)
                 else
-                listobj.push(obj);
+                if(obj.length != 0)
+                {
+                   listobj = obj;
+                   listobj.push(app);
+                }
+                else
+                {
                 listobj.push(app);
+                }
+                
                 appmanagementdb.put('appmanagement',listobj,function(err,data)
                 {
                     if(err) res.json(500,err);
