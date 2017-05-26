@@ -107,20 +107,20 @@ angular.module('app').directive('wwaDashboard', ['$localStorage', 'widgetResourc
             function init()
             {
                 widgetresource.$getAll({}, function (data) {
-                    console.log('widget loaded', data);
+                    // console.log('widget loaded', data);
                     scope.widgets = data.obj.obj;
 
                 });
             }
 
             scope.$watch('widgets', function () {
-                console.log('scope.widgets',scope.widgets);
+                // console.log('scope.widgets',scope.widgets);
                 if (scope.widgets.length > 0) {
                     widgetresource.obj = scope.widgets;
                     widgetresource.$add().then(function (data) {
 
                         if (data.success) {
-                            console.log('widget saved');
+                            // console.log('widget saved');
                         }
                         else {
 
