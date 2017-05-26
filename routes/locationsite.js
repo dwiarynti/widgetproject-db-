@@ -9,27 +9,33 @@ var loc = [
         id:"001",
         siteid:"001",
         locationname : "Anjungan A",
-        zone : ""
+        zone : "A"
 
     },
     {
         id:"002",
         siteid:"001",
         locationname : "Anjungan B",
-        zone : ""
+        zone : "A"
     },
     ,
     {
         id:"003",
         siteid:"001",
         locationname : "Anjungan B",
-        zone : ""
+        zone : "B"
     },
     {
         id:"004",
         siteid:"003",
         locationname : "Anjungan A",
-        zone : ""
+        zone : "A"
+    },
+     {
+        id:"005",
+        siteid:"003",
+        locationname : "Anjungan A",
+        zone : "B"
     }
 ]
 
