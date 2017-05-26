@@ -34,7 +34,7 @@ router.post('/appmanagement/create',function(req,res)
                "id" : sequenceno,
                "pagename" : req.body.pagename,
                "pagestatus" : req.body.pagestatus,
-               "widget" : []
+               "widget" : req.body.widget
            }
            var listobj = [];
             appmanagementdb.get('appmanagement',function(err,obj)
