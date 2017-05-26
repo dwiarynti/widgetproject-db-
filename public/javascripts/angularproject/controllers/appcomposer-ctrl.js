@@ -97,7 +97,10 @@ angular.module('app').controller('appcomposercontroller',
                 console.log(passingdataservice.appmanagementobj);
                 if(passingdataservice.appmanagementobj != undefined){
                     $scope.appmanagementobj = passingdataservice.appmanagementobj;
-                    $scope.$parent.widgets = $scope.appmanagementobj.widget
+                    angular.forEach($scope.appmanagementobj.widget, function (item) {
+                        item.widgetSettings.viewmode = false;
+                    });
+                    $scope.$parent.widgets = $scope.appmanagementobj.widget;
                 }else{
                     $location.path('appmanagement');
                 }

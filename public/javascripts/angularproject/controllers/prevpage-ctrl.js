@@ -7,7 +7,11 @@ angular.module('app').controller('prewpagecontroller',
             $scope.pervpageObj = {};
 
             appmanagementresource.$get({_id:$routeParams.id}, function(data){
+                angular.forEach(data.obj.widget, function (item) {
+                    item.widgetSettings.viewmode = false;
+                });
                 $scope.pervpageObj = data.obj;
+
             });
             
             $scope.gridsterOpts = {
