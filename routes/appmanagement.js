@@ -69,7 +69,7 @@ router.get('/appmanagement/getall',function(req,res)
         if(err) 
         if(err.message == "Key not found in database")
         {
-            res.json({"success": true, "message": "no data"});
+            res.json({"success": true, "message": "no data" , "obj": []});
         }
         else
         {
