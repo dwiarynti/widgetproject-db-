@@ -9,7 +9,7 @@
                {
                  init: {method:'GET', params:{action:'getall'}},
                  distinct: {method:'GET', params:{action:'distinct'}},
-                 filter: {method:'GET', params:{action:'filter'}}
+                 filter: {method:'POST', params:{action:'filter'}}
                })
     }
 }());
