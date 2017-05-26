@@ -112,6 +112,102 @@ angular.module('app').factory('dataService',
         }
     ];
 
+    var widgetDefinitions = [
+                {
+                    title: 'Temperature',
+                    settings: {
+                        sizeX: 3,
+                        sizeY: 3,
+                        minSizeX: 2,
+                        minSizeY: 2,
+                        template: '<wwa-temperature></wwa-temperature>',
+                        widgetSettings: {
+                            id: 1000,
+                            templateUrl: '/javascripts/app/dialogs/wwaSelectLocationTemplate.html',
+                            controller: 'wwaSelectLocationController'
+                        }
+                    }
+                },
+                {
+                    title: 'Inventory',
+                    settings: {
+                        sizeX: 5,
+                        sizeY: 3,
+                        minSizeX: 2,
+                        minSizeY: 2,
+                        template: '<wwa-inventory></wwa-inventory>',
+                        widgetSettings: {
+                            id: 1002,
+                            templateUrl: '/javascripts/app/dialogs/wwaSelectLocationTemplate.html',
+                            controller: 'wwaSelectLocationController'
+                        }
+                    }
+                },
+                {
+                    title: 'Employee',
+                    settings: {
+                        sizeX: 5,
+                        sizeY: 3,
+                        minSizeX: 2,
+                        minSizeY: 2,
+                        template: '<wwa-employee></wwa-employee>',
+                        widgetSettings: {
+                            id: 5000,
+                            templateUrl: '/javascripts/app/dialogs/wwaSelectEmployeeTemplate.html',
+                            controller: 'wwaSelectEmployeeController'
+                        }
+                    }
+                },
+                {
+                    title: 'Location',
+                    settings: {
+                        sizeX: 5,
+                        sizeY: 3,
+                        minSizeX: 2,
+                        minSizeY: 2,
+                        template: '<mvplocation></mvplocation>',
+                        widgetSettings: {
+                            id: 5003,
+                            selectedfilter:{by:"", option:""},
+                            templateUrl: '/javascripts/angularproject/dialog/mvp-location/mvp-location-dialog.html',
+                            controller: 'mvp-locationdialogcontroller'
+                        }
+                    }
+                },
+                {
+                    title: 'Person',
+                    settings: {
+                        sizeX: 5,
+                        sizeY: 3,
+                        minSizeX: 2,
+                        minSizeY: 2,
+                        template: '<mvpperson></mvpperson>',
+                        widgetSettings: {
+                            id: 5003,
+                            selectedfilter :"",
+                            templateUrl: '/javascripts/angularproject/dialog/mvp-person/mvp-person-dialog.html',
+                            controller: 'mvp-persondialogcontroller'
+                        }
+                    }
+                }, 
+                {
+                    title: 'Device',
+                    settings: {
+                        sizeX: 5,
+                        sizeY: 3,
+                        minSizeX: 2,
+                        minSizeY: 2,
+                        template: '<mvpdevice></mvpdevice>',
+                        widgetSettings: {
+                            id: 5003,
+                            selectedfilter :"",
+                            templateUrl: '/javascripts/angularproject/dialog/mvp-device/mvp-device-dialog.html',
+                            controller: 'mvp-devicedialogcontroller'
+                        }
+                    }
+                }
+            ];
+
     var getLocations = function () {
         return $timeout(function () {
             return locations;
@@ -146,11 +242,17 @@ angular.module('app').factory('dataService',
         }, 300);
     };
 
+    var getWidgetDefinition = function(){
+        return $timeout(function(){
+            return widgetDefinitions},300);
+    }
+
 
     return {
         getLocations: getLocations,
         getLocation: getLocation,
         getEmployees: getEmployees,
-        getEmployee: getEmployee
+        getEmployee: getEmployee,
+        getWidgetDefinition: getWidgetDefinition
     };
 }]);

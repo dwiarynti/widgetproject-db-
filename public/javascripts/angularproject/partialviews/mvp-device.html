@@ -7,16 +7,16 @@
         <table id="data-table" datatable="ng" dt-options="dtOptions" width="100%" class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th style="width: 11%;">device</th>
-                    <th style="width: 11%;">Zone</th>
-                    <th style="width: 11%;">Site</th>
+                    <th style="width: 11%;">Site</th>                    
+                    <th style="width: 11%;">Device Name</th>
+                    <th style="width: 11%;">Mac Address</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="deviceobj in deviceList">
+                    <td>{{deviceobj.sitename}}</td>
                     <td>{{deviceobj.devicename}}</td>
-                    <td>{{deviceobj.zone}}</td>
-                    <td>{{deviceobj.siteid}}</td>
+                    <td>{{deviceobj.mac}}</td>
                 </tr>
             </tbody>
         </table>  
