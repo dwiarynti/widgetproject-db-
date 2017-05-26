@@ -1,3 +1,11 @@
 <div ng-controller="prewpagecontroller">
-    
+    <div gridster="gridsterOpts">
+        <ul>
+            <li gridster-item="item" ng-repeat="item in pervpageObj.widget">
+                <ps-widget-body>
+                    
+                </ps-widget-body>
+            </li>
+        </ul>
+    </div>
 </div>

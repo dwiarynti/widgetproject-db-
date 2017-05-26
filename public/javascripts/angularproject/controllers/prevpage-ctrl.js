@@ -1,6 +1,27 @@
 angular.module('app').controller('prewpagecontroller',
-    ['$scope', '$routeParams',
-        function ($scope, $routeParams) {
+    ['$scope', '$routeParams', 'appmanagementResource',
+        function ($scope, $routeParams, appmanagementResource) {
             console.log($routeParams.id);
 
-        }])
+            var appmanagementresource = new appmanagementResource();
+            $scope.pervpageObj = {};
+
+            appmanagementresource.$get({_id:$routeParams.id}, function(data){
+                $scope.pervpageObj = data.obj;
+            });
+            
+            $scope.gridsterOpts = {
+                columns: 12,
+                margins: [20, 20],
+                outerMargin: false,
+                pushing: true,
+                floating: false,
+                swapping: false,
+                draggable: {
+                    enabled: false
+                },
+                resizable: {
+                    enabled: false
+                }
+            };
+        }]);

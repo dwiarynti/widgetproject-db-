@@ -1,6 +1,6 @@
 angular.module('app').controller('appcomposercontroller',
-    ['$scope', '$window','widgetResource', 'passingdataservice', 'appmanagementResource',
-        function ($scope, $window, widgetResource, passingdataservice, appmanagementResource) {
+    ['$scope', '$window', '$location','widgetResource', 'passingdataservice', 'appmanagementResource',
+        function ($scope, $window, $location, widgetResource, passingdataservice, appmanagementResource) {
             $scope.appmanagementobj={};
             var widgetresource = new widgetResource();
             var appmanagementresource = new appmanagementResource();
@@ -92,14 +92,21 @@ angular.module('app').controller('appcomposercontroller',
                     }
                 }
             ];
-            $scope.appmanagementobj = passingdataservice.appmanagementobj;
-            $scope.$parent.widgets = $scope.appmanagementobj.widget
-            console.log(passingdataservice.appmanagementobj);
-            console.log($scope);
-            // widgetresource.$getAll({}, function (data) {
-            //     $scope.appmanagementobj.widget = data.obj.obj;
-            //     console.log($scope.appmanagementobj.widget);
-            // });
+
+            $scope.init = function(){
+                console.log(passingdataservice.appmanagementobj);
+                if(passingdataservice.appmanagementobj != undefined){
+                    $scope.appmanagementobj = passingdataservice.appmanagementobj;
+                    $scope.$parent.widgets = $scope.appmanagementobj.widget
+                }else{
+                    $location.path('appmanagement');
+                }
+
+            }
+
+            $scope.init();
+            
+
 
             $scope.addNewWidget = function (widget) {
                 var newWidget = angular.copy(widget.settings);
@@ -129,21 +136,8 @@ angular.module('app').controller('appcomposercontroller',
                 });
             }
             
-            // $scope.$watch('widgets', function () {
-            //     if ($scope.appmanagementobj.widget.length > 0) {
-            //         widgetresource.obj = $scope.appmanagementobj.widget;
-            //         console.log($scope.appmanagementobj.widget);
-            //         widgetresource.$add().then(function (data) {
-
-            //             if (data.success) {
-            //                 console.log('widget saved');
-            //             }
-            //             else {
-
-            //             }
-            //         });
-            //     }
-                
-            // }, true);
+            $scope.ViewPage = function(){
+                $location.path('prevpage/'+$scope.appmanagementobj.id);
+            }
 
         }]);

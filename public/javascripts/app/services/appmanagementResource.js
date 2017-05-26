@@ -9,7 +9,8 @@
                {
                  init: {method:'GET', params:{action:'getall'}},
                  create: {method:'POST', params:{action:'create'}},
-                 update: {method:'POST', params:{action:'update'}}
+                 update: {method:'POST', params:{action:'update'}},
+                 get: {method:'GET'}
                  
                })
     }
