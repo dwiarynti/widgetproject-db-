@@ -202,7 +202,7 @@ router.get('/locationsite/distinct/:_id',function(req,res)
 router.post('/locationsite/filter/:_id',function(req,res)
 {
     var id = req.params._id;
-    var paramslocationname = 'Anjungan B';
+    var paramslocationname = req.body.locationname;
     var paramszone = req.body.zone;
     var listitem = [];
     var sitename = {};
