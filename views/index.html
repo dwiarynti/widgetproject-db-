@@ -2,7 +2,7 @@
 <html ng-app="app">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Whitewater Adventures</title>
+    <title>Widget Project</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href="/javascripts/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="/javascripts/Content/font-awesome.min.css" rel="stylesheet" />
@@ -82,7 +82,7 @@
 
     <div ng-switch="state">
         <div ng-switch-when="x unauthorized" class="sign-in-form">
-            <h2>Whitewater Adventures Admin App</h2>
+            <h2>Widget Project Admin App</h2>
             <h4>Sign In</h4>
             <form>
                 <div class="form-group">
@@ -97,7 +97,7 @@
             <button class="btn btn-default" ng-click="signIn()">Sign In</button>
         </div>
         <div ng-switch-default>
-            <ps-framework title="Whitewater Adventures"
+            <ps-framework title="Admin"
                           subtitle="Administrative Application"
                           icon-file="/javascripts/images/kayak-icon-flat.png">
                 <ps-menu>
