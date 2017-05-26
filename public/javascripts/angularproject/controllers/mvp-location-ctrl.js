@@ -2,8 +2,9 @@ angular.module('app').controller('mpv-locationcontroller',
     ['$scope', 'locationsiteResource',
         function ($scope, locationsiteResource) {
             $scope.LocationList = [];
-            console.log($scope);
+            // console.log($scope);
             var locationsiteresource = new locationsiteResource();
+            // var selectedfilter = $scope.$parent.item.widgetSettings.selectedfilter;            
             $scope.getAllLocationSite = function(){
                 locationsiteresource.$init({_id:siteid}, function(data){
                     $scope.LocationList = data.obj;
@@ -11,8 +12,12 @@ angular.module('app').controller('mpv-locationcontroller',
             }
 
             $scope.getFilteredLocationSite = function(){
+                var selectedfilter = $scope.$parent.item.widgetSettings.selectedfilter;                 
+                var locationsiteresource = new locationsiteResource();
                 locationsiteresource.locationname = selectedfilter.by == "Location"? selectedfilter.option : null;
                 locationsiteresource.zone = selectedfilter.by == "Zone" ? selectedfilter.option : null;
+                console.log(locationsiteresource);
+                
                 locationsiteresource.$filter({_id:siteid}, function(data){
                     $scope.LocationList = data.obj;
                 });
@@ -20,15 +25,25 @@ angular.module('app').controller('mpv-locationcontroller',
             
 
             var siteid = "001";
-            var selectedfilter = $scope.$parent.item.widgetSettings.selectedfilter;
-            if(selectedfilter.by != "" && selectedfilter.option != ""){
-                $scope.getFilteredLocationSite();
-            }else{
-                $scope.getAllLocationSite();
-            }
+            $scope.$watch(function () {
+                return $scope.$parent.item.widgetSettings.selectedfilter;
+            }, function () {
+                var selectedfilter = $scope.$parent.item.widgetSettings.selectedfilter;                 
+                // console.log(selectedfilter);
+                if(selectedfilter.by != "" && selectedfilter.option != ""){
+                    $scope.getFilteredLocationSite();
+                }else{
+                    $scope.getAllLocationSite();
+                }
+            })
 
-
-
+            // $scope.$watch($scope.$parent.item.widgetSettings.selectedfilter, function () {
+            //     if(selectedfilter.by != "" && selectedfilter.option != ""){
+            //         $scope.getFilteredLocationSite();
+            //     }else{
+            //         $scope.getAllLocationSite();
+            //     }
+            // }, true);
 
         }
     ]);
