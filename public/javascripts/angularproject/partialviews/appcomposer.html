@@ -3,7 +3,7 @@
     <div class="common-heading">
         <img class="common-icon" ng-src="/javascripts/images/employee.png" alt="employee" />
         <span class="www-employee-title">Application Composer</span>
-        <button class="btn btn-default" ng-click="ViewPage()">View Page</button>
+        <button class="btn btn-default" ng-click="ViewPage()" style="float:right">View Page</button>
     </div>
     <div class="common-body">
         <div class="row" style="margin:1%">
@@ -28,8 +28,8 @@
                     </ul>
                 </div>
                 <br>
-                <button ng-if="appmanagementobj.id == 0" class="btn btn-primary btn-lg" ng-click="Save()">Save</button>
-                <button ng-if="appmanagementobj.id != 0" class="btn btn-primary btn-lg" ng-click="Update()">Update</button>
+                <button ng-if="appmanagementobj.id == 0" class="btn btn-primary btn-lg" ng-click="Save()" style="width:100%">Save</button>
+                <button ng-if="appmanagementobj.id != 0" class="btn btn-primary btn-lg" ng-click="Update()" style="width:100%">Update</button>
             </div>
         </div>
 
