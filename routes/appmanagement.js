@@ -66,7 +66,16 @@ router.get('/appmanagement/getall',function(req,res)
 {
     appmanagementdb.get('appmanagement',function(err,management)
     {
-        if(err) res.json(500,err);
+        if(err) 
+        if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data"});
+        }
+        else
+        {
+              res.json(500,err);
+        }
+      
         else res.json({"success": true, "obj":management})
     });
 })
