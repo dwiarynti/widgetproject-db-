@@ -25,6 +25,7 @@ var widget = require('./routes/widget');
 var employee = require('./routes/employee');
 var locationsite = require('./routes/locationsite');
 var site = require('./routes/site');
+var appmanagement = require('./routes/appmanagement')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,6 +38,7 @@ app.use('/api',widget);
 app.use('/api',employee);
 app.use('/api',locationsite);
 app.use('/api',site);
+app.use('/api',appmanagement);
 //
 
 
