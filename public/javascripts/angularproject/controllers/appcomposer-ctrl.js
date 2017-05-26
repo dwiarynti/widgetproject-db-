@@ -93,7 +93,9 @@ angular.module('app').controller('appcomposercontroller',
                 }
             ];
             $scope.appmanagementobj = passingdataservice.appmanagementobj;
+            $scope.$parent.widgets = $scope.appmanagementobj.widget
             console.log(passingdataservice.appmanagementobj);
+            console.log($scope);
             // widgetresource.$getAll({}, function (data) {
             //     $scope.appmanagementobj.widget = data.obj.obj;
             //     console.log($scope.appmanagementobj.widget);
