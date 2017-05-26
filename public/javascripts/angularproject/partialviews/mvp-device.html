@@ -1,23 +1,22 @@
 <div class="mvp-widget">
-    <div class="mvp-location-heading">
+    <div class="mvp-device-heading">
         <img class="mvp-icon" ng-src="/javascripts/images/employee.png" alt="employee" />
-        <span class="www-employee-title">Location</span>
+        <span class="www-employee-title">Device</span>
     </div>
     <div class="mvp-body">
         <table id="data-table" datatable="ng" dt-options="dtOptions" width="100%" class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th style="width: 11%;">Site</th>                    
+                    <th style="width: 11%;">device</th>
                     <th style="width: 11%;">Zone</th>
-                    <th style="width: 11%;">Location</th>
-
+                    <th style="width: 11%;">Site</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="locationobj in LocationList">
-                    <td>{{locationobj.siteid}}</td>             
-                    <td>{{locationobj.zone}}</td>                           
-                    <td>{{locationobj.locationname}}</td>
+                <tr ng-repeat="deviceobj in deviceList">
+                    <td>{{deviceobj.devicename}}</td>
+                    <td>{{deviceobj.zone}}</td>
+                    <td>{{deviceobj.siteid}}</td>
                 </tr>
             </tbody>
         </table>  

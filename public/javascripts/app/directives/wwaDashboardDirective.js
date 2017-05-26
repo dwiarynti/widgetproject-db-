@@ -97,6 +97,22 @@ angular.module('app').directive('wwaDashboard', ['$localStorage', 'widgetResourc
                             controller: 'mvp-persondialogcontroller'
                         }
                     }
+                }, 
+                {
+                    title: 'Device',
+                    settings: {
+                        sizeX: 5,
+                        sizeY: 3,
+                        minSizeX: 2,
+                        minSizeY: 2,
+                        template: '<mvpdevice></mvpdevice>',
+                        widgetSettings: {
+                            id: 5003,
+                            selectedfilter :"",
+                            templateUrl: '/javascripts/angularproject/dialog/mvp-device/mvp-device-dialog.html',
+                            controller: 'mvp-devicedialogcontroller'
+                        }
+                    }
                 }
             ];
             
