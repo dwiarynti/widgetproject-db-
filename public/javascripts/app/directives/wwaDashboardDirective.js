@@ -76,6 +76,8 @@ angular.module('app').directive('wwaDashboard', ['$localStorage', 'widgetResourc
                         template: '<mvplocation></mvplocation>',
                         widgetSettings: {
                             id: 5003,
+                            by:"",
+                            option:"",
                             templateUrl: '/javascripts/angularproject/dialog/mvp-location/mvp-location-dialog.html',
                             controller: 'mvp-locationdialogcontroller'
                         }
