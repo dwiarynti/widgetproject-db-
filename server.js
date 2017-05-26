@@ -27,6 +27,7 @@ var locationsite = require('./routes/locationsite');
 var site = require('./routes/site');
 var appmanagement = require('./routes/appmanagement');
 var person = require('./routes/person');
+var device = require('./routes/device')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,6 +42,7 @@ app.use('/api',locationsite);
 app.use('/api',site);
 app.use('/api',appmanagement);
 app.use('/api',person);
+app.use('/api',device);
 //
 
 
