@@ -338,7 +338,7 @@ router.get('/persondevice/:_id',function(req,res)
 router.get('/persondevice/filter/:_id',function(req,res)
 {
     var id = req.params._id;
-    var paramsdevicename = "A";
+    var paramsdevicename = req.body.devicename;
     var listitem = [];
     var sitename = {};
     sitedb.get('site',function(err,sites)
