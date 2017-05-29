@@ -74,7 +74,7 @@ router.post('/persondevice/create', function (req, res) {
             {
                 listobj.push(data);
             }
-             persondevicedb.put('persondevice', obj, function (err) {
+             persondevicedb.put('persondevice', listobj, function (err) {
                 if(err)
                 res.json(500,err)
                 
