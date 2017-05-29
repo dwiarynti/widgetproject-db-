@@ -8,7 +8,7 @@ angular.module('app').controller('prewpagecontroller',
 
             appmanagementresource.$get({_id:$routeParams.id}, function(data){
                 angular.forEach(data.obj.widget, function (item) {
-                    item.widgetSettings.viewmode = false;
+                    item.widgetSettings.viewmode = true;
                 });
                 $scope.pervpageObj = data.obj;
 

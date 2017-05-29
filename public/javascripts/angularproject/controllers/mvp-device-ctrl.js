@@ -5,7 +5,7 @@ angular.module('app').controller('mpv-devicecontroller',
             var deviceresource = new deviceResource();
             var siteid = "001";
             deviceresource.$init({_id:siteid}, function(data){
-                console.log(data.obj);
+                // console.log(data.obj);
                 $scope.deviceList = data.obj;
             });
         }

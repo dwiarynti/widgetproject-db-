@@ -22,7 +22,7 @@ angular.module('app').directive('wwaDashboard', ['$localStorage', 'widgetResourc
 
             scope.widgetDefinitions = [];
             dataService.getWidgetDefinition().then(function(data){
-                console.log(data);
+                // console.log(data);
                 scope.widgetDefinitions = data;
             });
             

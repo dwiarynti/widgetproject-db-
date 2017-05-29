@@ -4,7 +4,7 @@ angular.module('app').controller('appcomposercontroller',
             $scope.appmanagementobj={};
             var widgetresource = new widgetResource();
             var appmanagementresource = new appmanagementResource();
-            console.log($scope.$parent.widgetDefinitions);
+            // console.log($scope.$parent.widgetDefinitions);
             $scope.gridsterOpts = {
                 columns: 12,
                 margins: [20, 20],
@@ -15,12 +15,12 @@ angular.module('app').controller('appcomposercontroller',
             };
             $scope.widgetDefinitions = [];
             dataService.getWidgetDefinition().then(function(data){
-                console.log(data);
+                // console.log(data);
                 $scope.widgetDefinitions = data;
             });
 
             $scope.init = function(){
-                console.log(passingdataservice.appmanagementobj);
+                // console.log(passingdataservice.appmanagementobj);
                 if(passingdataservice.appmanagementobj != undefined){
                     $scope.appmanagementobj = passingdataservice.appmanagementobj;
                     angular.forEach($scope.appmanagementobj.widget, function (item) {
@@ -46,10 +46,10 @@ angular.module('app').controller('appcomposercontroller',
                 appmanagementresource.pagename = $scope.appmanagementobj.pagename;
                 appmanagementresource.pagestatus = $scope.appmanagementobj.pagestatus;
                 appmanagementresource.widget = $scope.appmanagementobj.widget;
-                console.log(appmanagementresource);
+                // console.log(appmanagementresource);
                 appmanagementresource.$create(function(data){
                     $window.alert("Data saved successfully");
-                    console.log(data);
+                    // console.log(data);
                 });
 
             }
@@ -61,7 +61,7 @@ angular.module('app').controller('appcomposercontroller',
                 appmanagementresource.widget = $scope.appmanagementobj.widget;
                 appmanagementresource.$update(function(data){
                     $window.alert("Data saved successfully");
-                    console.log(data);
+                    // console.log(data);
                 });
             }
             
