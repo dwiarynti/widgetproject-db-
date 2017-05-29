@@ -9,14 +9,16 @@
                 <tr>
                     <th style="width: 11%;">Site</th>                    
                     <th style="width: 11%;">Person</th>
-                    <th style="width: 11%;">location</th>
+                    <th style="width: 11%;">Device</th>
+                    <!--<th style="width: 11%;">Location</th>-->
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="personlocationobj in personlocationList">
                     <td>{{personlocationobj.sitename}}</td>
                     <td>{{personlocationobj.personname}}</td>
-                    <td>{{personlocationobj.locationname}}</td>
+                    <td>{{personlocationobj.devicename}}</td>
+                    <!--<td>{{personlocationobj.locationrow}}</td>-->
                 </tr>
             </tbody>
         </table>  

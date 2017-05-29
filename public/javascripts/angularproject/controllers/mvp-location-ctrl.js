@@ -17,7 +17,7 @@ angular.module('app').controller('mpv-locationcontroller',
                 var locationsiteresource = new locationsiteResource();
                 locationsiteresource.locationname = selectedfilter.by == "Location"? selectedfilter.option : null;
                 locationsiteresource.zone = selectedfilter.by == "Zone" ? selectedfilter.option : null;
-                console.log(locationsiteresource);
+                // console.log(locationsiteresource);
                 
                 locationsiteresource.$filter({_id:siteid}, function(data){
                     console.log(data);

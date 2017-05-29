@@ -1,16 +1,17 @@
 "use strict";
 
 angular.module('app').controller('mvp-personlocationdialogcontroller',
-    ['$scope', 'dataService', 
-    function ($scope, dataService) {
-
-        
+    ['$scope', 'dataService','personlocationResource', 
+    function ($scope, dataService, personlocationResource) {
+        var personlocationresource = new personlocationResource();
+        $scope.filteroptions = [];
+        $scope.selectedfilter = "";
         var siteid = "001";
-        // personlocationsiteresource.$distinct({_id:siteid}, function(data){
-        //     // $scope.objmodel = data.obj;
-        //     $scope.filteroptions = data.obj;
-        //     console.log(data.obj);
-        // });
+        personlocationresource.$distinct({_id:siteid}, function(data){
+            // // $scope.objmodel = data.obj;
+            $scope.filteroptions = data.obj;
+            console.log(data.obj);
+        });
 
         $scope.saveSettings = function () {
             $scope.item.widgetSettings.selectedfilter = $scope.selectedfilter;

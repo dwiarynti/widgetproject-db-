@@ -9,10 +9,10 @@
         </select>
     </div>-->
     <div class="form-group">
-        <label>Filter by Person location</label>
-        <select class="form-control" style="padding-left:0px; padding-right:0px;" ng-model="selectedfilter.by">
+        <label>Filter by Device</label>
+        <select class="form-control" style="padding-left:0px; padding-right:0px;" ng-model="selectedfilter">
             <option value="">Please Select</option>
-            <option ng-repeat="obj in objmodel.FilterOption" value="{{obj.OptionName}}">{{obj.OptionName}}</option>
+            <option ng-repeat="obj in filteroptions" value="{{obj}}">{{obj}}</option>
         </select>
     </div>
 </div>

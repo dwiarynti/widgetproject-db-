@@ -7,7 +7,9 @@
         return $resource("/api/personlocation/:action/:_id",
                { _id: '@_id' },
                {
-                 init: {method:'GET', params:{action:'getbysite'}}
+                 filter: {method:'POST', params:{action:'filter'}},
+                 distinct: {method:'GET', params:{action:'distinct'}},
+
                });
     }
 }());

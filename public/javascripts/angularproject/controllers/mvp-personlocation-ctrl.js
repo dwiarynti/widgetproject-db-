@@ -4,9 +4,16 @@ angular.module('app').controller('mpv-personlocationcontroller',
             $scope.personlocationList = [];
             var personlocationresource = new personlocationResource();
             var siteid = "001";
-            // personlocationresource.$init({_id:siteid}, function(data){
-            //     console.log(data.obj);
-            //     $scope.personlocationList = data.obj;
-            // });
+
+            $scope.$watch(function () {
+                return $scope.$parent.item.widgetSettings.selectedfilter;
+            }, function () {
+                var selectedfilter = $scope.$parent.item.widgetSettings.selectedfilter;
+                personlocationresource.devicename  = selectedfilter || null;
+                personlocationresource.$filter({_id:siteid}, function(data){
+                    console.log(data.obj);
+                    $scope.personlocationList = data.obj;
+                });
+            });
         }
     ]);
