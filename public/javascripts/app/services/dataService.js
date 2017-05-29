@@ -185,8 +185,8 @@ angular.module('app').factory('dataService',
                         widgetSettings: {
                             id: 5003,
                             selectedfilter :"",
-                            templateUrl: '/javascripts/angularproject/dialog/mvp-person/mvp-person-dialog.html',
-                            controller: 'mvp-persondialogcontroller'
+                            templateUrl: '',
+                            controller: ''
                         }
                     }
                 }, 
