@@ -107,7 +107,6 @@ router.post('/persondevice/createdevice', function (req, res) {
     });
 });
 
-
 router.get('/persondevice/getbysite/:_id',function(req,res)
 {
     var id = req.params._id;
@@ -236,7 +235,7 @@ router.get('/persondevice/getbysite/:_id',function(req,res)
                                   }
                               }
                           }
-                           res.json({"success":true,"obj": listpersondevicename});
+                           res.json({"success":true,"obj": result});
 
 
                       })
@@ -336,5 +335,9 @@ router.get('/persondevice/:_id',function(req,res)
 
 });
 
+router.get('persondevice/filter',function(req,res)
+{
+
+})
 
 module.exports = router;
