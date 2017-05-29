@@ -16,7 +16,7 @@ var device = [
     {
         id:2,
         mac: 91290391022,
-        devicename:"A",
+        devicename:"B",
         siteid:"001"
         
     },
@@ -251,12 +251,12 @@ router.get('/device/distinct/:_id',function(req,res)
 
 });
 
-router.get('/device/filter/:_id',function(req,res)
+router.post('/device/filter/:_id',function(req,res)
 {
     var id = req.params._id;
+    var paramsdevicename = req.body.devicename;
     var listitem = [];
     var sitename = {};
-    var paramsdevicename = req.body.devicename;
     sitedb.get('site',function(err,sites)
     {
         if(err) 
@@ -315,19 +315,22 @@ router.get('/device/filter/:_id',function(req,res)
                  }
                  if(index == datadevice.length)
                  {
-                     var result = [];
-                     if(paramsdevicename != null)
-                     {
-                         for(var j = 0 ; j < item.length ; j++)
-                            {
-                                if(item[j].devicename == paramsdevicename)
-                                {
-                                    result.push(result[j]);
-                                }
-                            }
-                             res.json({"success":true,"obj": resultpersondevice});
-                     }
-                    res.json({"obj": item })
+                    if(paramsdevicename != null)
+                    {
+                    var result = [];
+                    for(var i = 0 ; i < item.length;i++)
+                    {
+                        if(item[i].devicename ==paramsdevicename)
+                        {
+                            result.push(item[i]);
+                        }
+                    }
+                    res.json({"success":true,"obj": result});
+                    }
+                    else
+                    {
+                           res.json({"success":true,"obj": item});   
+                    }
                  }
                
 
@@ -338,7 +341,5 @@ router.get('/device/filter/:_id',function(req,res)
             res.json(500,err);
         }
     });
-
-
 });
 module.exports = router;
