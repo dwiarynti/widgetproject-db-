@@ -67,7 +67,7 @@ router.post('/appmanagement/create',function(req,res)
                     {   
                         if(err) res.json(500,err)
                         else
-                        res.json({"success":true, "obj":data})
+                        res.json({"success":true, "obj":app})
                     });
                     
                 })
