@@ -91,14 +91,21 @@ var loc = [
   }
 ];
 
-locationdb.put('listlocation', loc, function (err) {
-  if (err) console.log('success put data initialization', err);
-  else console.log('success put data initialization');
+locationdb.get('listlocation', function (err, locs) {
+  if (err) {
+    //console.log('location', err);
+    if (err.message == "Key not found in database") {
+      locationdb.put('listlocation', loc, function (err) {
+        console.log('location data init');
+      });
+    }
+  }
 });
+
 
 router.get('/location/GetAll/', function (req, res) {
 
-  locationdb.get('listLocation', function (err, locations) {
+  locationdb.get('listlocation', function (err, locations) {
     if (err) res.json(500, err);
     else res.json({ "obj": locations });
   });

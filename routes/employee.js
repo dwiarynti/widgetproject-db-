@@ -49,23 +49,27 @@ var emp = [
   }
 ];
 
-employeedb.put('listemployee', emp, function (err) {
-  if (err) console.log('success put data initialization', err);
-  else console.log('success put data initialization');
+employeedb.get('listemployee', function (err, emps) {
+  if (err) {
+    //console.log('employee', err);
+    if (err.message == "Key not found in database") {
+      employeedb.put('listemployee', emp, function (err) {
+        console.log('employee data init');
+      });
+    }
+  }
 });
 
 router.get('/employee/GetAll/', function (req, res) {
 
   employeedb.get('listemployee', function (err, employees) {
     if (err)
-    if(err.message == "Key not found in database")
-    {
-     res.json({"success": true, "message": "no data" , "obj": []});
-    }
-    else
-    {
-      res.json(500,err);
-    }
+      if (err.message == "Key not found in database") {
+        res.json({ "success": true, "message": "no data", "obj": [] });
+      }
+      else {
+        res.json(500, err);
+      }
     else res.json({ "obj": employees });
   });
 
@@ -76,14 +80,12 @@ router.get('/employee/:_id', function (req, res) {
 
   employeedb.get('listemployee', function (err, employees) {
     if (err)
-     if(err.message == "Key not found in database")
-        {
-            res.json({"success": true, "message": "no data" , "obj": []});
-        }
-        else
-        {
-              res.json(500,err);
-        }
+      if (err.message == "Key not found in database") {
+        res.json({ "success": true, "message": "no data", "obj": [] });
+      }
+      else {
+        res.json(500, err);
+      }
     else {
       var item = {};
       for (var index = 0; index < employees.length; index++) {
