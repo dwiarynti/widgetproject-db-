@@ -29,8 +29,18 @@ angular.module('app').controller('appmanagemetcontroller',
 
             }
 
-            $scope.Update = function(){
-                
+            $scope.Update = function(obj){
+                console.log(obj);
+                appmanagementresource.id = obj.id;
+                appmanagementresource.pagename = obj.pagename;
+                appmanagementresource.pagestatus = obj.pagestatus;
+                appmanagementresource.widget = obj.widget;
+                appmanagementresource.$update(function(data){
+                    console.log(data);
+                    if(data.success){
+                        $scope.turnoffeditmode(obj);
+                    }
+                });
             }
             
             $scope.turnoffaddmode = function(index){

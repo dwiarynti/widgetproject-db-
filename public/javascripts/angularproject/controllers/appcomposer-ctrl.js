@@ -49,7 +49,7 @@ angular.module('app').controller('appcomposercontroller',
                 // console.log(appmanagementresource);
                 appmanagementresource.$create(function(data){
                     $window.alert("Data saved successfully");
-                    // console.log(data);
+                    console.log(data);
                 });
 
             }

@@ -34,8 +34,9 @@
 
 
                         <td ng-if="pageobj.editmode == false">
-                            <a ng-click="Edit(pageobj)" class="link" style="cursor: pointer">Edit</a> |
-                            <a ng-click="ComposePage(pageobj)" class="link" style="cursor: pointer">Compose</a>
+                            <a ng-click="Edit(pageobj)" class="link" style="cursor: pointer">Edit</a> 
+                            <label ng-if="pageobj.pagestatus == true">|</label>
+                            <a ng-if="pageobj.pagestatus == true" ng-click="ComposePage(pageobj)" class="link" style="cursor: pointer">Compose</a>
                         </td>
 
                         <td ng-if="pageobj.editmode == true && pageobj.id != 0">
