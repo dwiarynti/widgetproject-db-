@@ -53,7 +53,14 @@ router.get('/person/:_id',function(req,res)
     persondb.get('person',function(err,person)
     {
         if(err) 
-        res.json(500,err);
+        if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
         else 
        var item = {};
         for (var index = 0; index < person.length; index++) {
@@ -81,7 +88,15 @@ router.get('/person/getbysite/:_id',function(req,res)
     var sitename = {};
     sitedb.get('site',function(err,sites)
     {
-        if(err) res.json(500,err);
+        if(err) 
+         if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
         else
         for(var i = 0 ; i < sites.length; i++)
         {
@@ -93,7 +108,15 @@ router.get('/person/getbysite/:_id',function(req,res)
         {
             persondb.get('person',function(err,dataperson)
             {
-                 if(err) res.json(500,err);
+                if(err)
+                if(err.message == "Key not found in database")
+                {
+                    res.json({"success": true, "message": "no data" , "obj": []});
+                }
+                else
+                {
+                    res.json(500,err);
+                }
                
                  else
                   var index = 0;

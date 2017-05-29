@@ -12,7 +12,15 @@ var widgetdb = db.sublevel('widget')
 router.get('/widget/GetAll/',function(req, res) {
   
     widgetdb.get('listwidget', function(err, widgets){
-      if (err) res.json(500, err);
+       if (err) 
+       if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
       else res.json({"obj": widgets});
     });
  
@@ -22,7 +30,15 @@ router.get('/widget/:_id', function (req, res) {
   var id = req.params._id;
   
   widgetdb.get('listwidget', function(err, widgets){
-      if (err) res.json(500, err);
+       if (err)
+       if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
       else 
       {
         var item = {};

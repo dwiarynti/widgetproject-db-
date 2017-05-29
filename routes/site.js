@@ -32,7 +32,15 @@ router.get('/site/getall',function(req,res)
    
     sitedb.get('site',function(err,locations)
     {
-        if (err) res.json(500,err);
+        if (err)
+         if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
         else 
         
         res.json({"obj": locations});

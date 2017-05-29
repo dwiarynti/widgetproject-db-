@@ -39,7 +39,15 @@ router.post('/appmanagement/create',function(req,res)
            var listobj = [];
             appmanagementdb.get('appmanagement',function(err,obj)
             {
-                if(err) res.json(500,err)
+                if(err) 
+                if(err.message == "Key not found in database")
+                {
+                    res.json({"success": true, "message": "no data" , "obj": []});
+                }
+                else
+                {
+                    res.json(500,err);
+                }
                 else
                 if(obj.length != 0)
                 {
@@ -59,7 +67,7 @@ router.post('/appmanagement/create',function(req,res)
                     {   
                         if(err) res.json(500,err)
                         else
-                        res.json({"success":true})
+                        res.json({"success":true, "obj":data})
                     });
                     
                 })

@@ -46,7 +46,15 @@ router.get('/locationsite/getall/:_id',function(req,res)
     var sitename = {};
     sitedb.get('site',function(err,sites)
     {
-        if(err) res.json(500,err);
+        if(err) 
+        if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
         else
         for(var i = 0 ; i < sites.length; i++)
         {
@@ -58,8 +66,15 @@ router.get('/locationsite/getall/:_id',function(req,res)
         {
             locationdb.get('locationsite',function(err,locations)
             {
-                 if(err) res.json(500,err);
-               
+                 if(err) 
+                   if(err.message == "Key not found in database")
+                    {
+                        res.json({"success": true, "message": "no data" , "obj": []});
+                    }
+                    else
+                    {
+                        res.json(500,err);
+                    }
                  else
                   var index = 0;
                   var item = [];
@@ -114,7 +129,14 @@ router.get('/locationsite/:_id',function(req,res)
     locationdb.get('locationsite',function(err,locations)
     {
         if(err)
-        res.json(500,err);
+        if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
         else
         var item = {};
         for (var index = 0; index < locations.length; index++) {
@@ -135,7 +157,15 @@ router.get('/locationsite/distinct/:_id',function(req,res)
     var sitename = {};
     sitedb.get('site',function(err,sites)
     {
-        if(err) res.json(500,err);
+        if(err) 
+         if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
         else
         for(var i = 0 ; i < sites.length; i++)
         {
@@ -147,7 +177,15 @@ router.get('/locationsite/distinct/:_id',function(req,res)
         {
             locationdb.get('locationsite',function(err,locations)
             {
-                 if(err) res.json(500,err);
+                 if(err) 
+                if(err.message == "Key not found in database")
+                {
+                    res.json({"success": true, "message": "no data" , "obj": []});
+                }
+                else
+                {
+                    res.json(500,err);
+                }
                
                  else
                   var index = 0;

@@ -57,7 +57,15 @@ employeedb.put('listemployee', emp, function (err) {
 router.get('/employee/GetAll/', function (req, res) {
 
   employeedb.get('listemployee', function (err, employees) {
-    if (err) res.json(500, err);
+    if (err)
+    if(err.message == "Key not found in database")
+    {
+     res.json({"success": true, "message": "no data" , "obj": []});
+    }
+    else
+    {
+      res.json(500,err);
+    }
     else res.json({ "obj": employees });
   });
 
@@ -67,7 +75,15 @@ router.get('/employee/:_id', function (req, res) {
   var id = req.params._id;
 
   employeedb.get('listemployee', function (err, employees) {
-    if (err) res.json(500, err);
+    if (err)
+     if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
     else {
       var item = {};
       for (var index = 0; index < employees.length; index++) {

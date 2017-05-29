@@ -67,7 +67,14 @@ router.get('/device/:_id',function(req,res)
     devicedb.get('device',function(err,datadevice)
     {
         if(err) 
-        res.json(500,err);
+        if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
         else 
        var item = {};
         for (var index = 0; index < datadevice.length; index++) {
@@ -88,7 +95,15 @@ router.get('/device/getbysite/:_id',function(req,res)
     var sitename = {};
     sitedb.get('site',function(err,sites)
     {
-        if(err) res.json(500,err);
+        if(err) 
+        if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
         else
         for(var i = 0 ; i < sites.length; i++)
         {
@@ -100,7 +115,15 @@ router.get('/device/getbysite/:_id',function(req,res)
         {
             devicedb.get('device',function(err,datadevice)
             {
-                 if(err) res.json(500,err);
+                if(err) 
+                if(err.message == "Key not found in database")
+                {
+                    res.json({"success": true, "message": "no data" , "obj": []});
+                }
+                else
+                {
+                    res.json(500,err);
+                }
                
                  else
                   var index = 0;
