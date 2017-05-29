@@ -1,16 +1,16 @@
 "use strict";
 
 angular.module('app').controller('mvp-persondevicedialogcontroller',
-    ['$scope', 'dataService', 
-    function ($scope, dataService) {
-
-        
+    ['$scope', 'dataService', 'persondeviceResource', 
+    function ($scope, dataService, persondeviceResource) {
+        var persondeviceresource = new persondeviceResource();
+        $scope.selectedfilter;
+        $scope.filterobj = [];
         var siteid = "001";
-        // persondevicesiteresource.$distinct({_id:siteid}, function(data){
-        //     // $scope.objmodel = data.obj;
-        //     $scope.filteroptions = data.obj;
-        //     console.log(data.obj);
-        // });
+        persondeviceresource.$distinct({_id:siteid}, function(data){
+                console.log(data);
+                $scope.filterobj= data.obj;
+        });
 
         $scope.saveSettings = function () {
             $scope.item.widgetSettings.selectedfilter = $scope.selectedfilter;

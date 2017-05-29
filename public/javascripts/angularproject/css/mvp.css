@@ -73,3 +73,21 @@
     font-size: 15px;
     line-height: 32px;
 }
+
+.mvp-persondevice-heading {
+    background-color: lightcoral;
+    color: white;
+    height: 32px;
+    padding-top: 2px;
+    font-size: 15px;
+    line-height: 32px;
+}
+
+.mvp-personlocation-heading {
+    background-color: olive;
+    color: white;
+    height: 32px;
+    padding-top: 2px;
+    font-size: 15px;
+    line-height: 32px;
+}

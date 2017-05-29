@@ -8,7 +8,8 @@
                { _id: '@_id' },
                {
                  init: {method:'GET', params:{action:'getbysite'}},
-                 distinct: {method:'GET', params:{action:'distinct'}}
+                 distinct: {method:'GET', params:{action:'distinct'}},
+                 filter: {method:'POST', params:{action:'filter'}}
                });
     }
 }());

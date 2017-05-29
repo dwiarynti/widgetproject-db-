@@ -46,11 +46,11 @@ angular.module('app').controller('appcomposercontroller',
                 appmanagementresource.pagename = $scope.appmanagementobj.pagename;
                 appmanagementresource.pagestatus = $scope.appmanagementobj.pagestatus;
                 appmanagementresource.widget = $scope.appmanagementobj.widget;
-                // console.log(appmanagementresource);
+
                 appmanagementresource.$create(function(data){
                     $window.alert("Data saved successfully");
                     console.log(data);
-
+                    $scope.appmanagementobj = data.obj;
                     //Reinit menu
                     $rootScope.addedNewApp = true;
                 });
@@ -70,6 +70,8 @@ angular.module('app').controller('appcomposercontroller',
             }
             
             $scope.ViewPage = function(){
+                // window.open($location.path('/prevpage/', {id:$scope.appmanagementobj.id}));
+            console.log($location);
                 $location.path('prevpage/'+$scope.appmanagementobj.id);
             }
 

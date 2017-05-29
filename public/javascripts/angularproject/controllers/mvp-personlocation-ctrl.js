@@ -4,9 +4,9 @@ angular.module('app').controller('mpv-personlocationcontroller',
             $scope.personlocationList = [];
             var personlocationresource = new personlocationResource();
             var siteid = "001";
-            personlocationresource.$init({_id:siteid}, function(data){
-                console.log(data.obj);
-                $scope.personlocationList = data.obj;
-            });
+            // personlocationresource.$init({_id:siteid}, function(data){
+            //     console.log(data.obj);
+            //     $scope.personlocationList = data.obj;
+            // });
         }
     ]);
