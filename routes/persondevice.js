@@ -30,6 +30,19 @@ var persondevice = [
 
 
 router.post('/persondevice/create', function (req, res) {
+   
+             persondevicedb.put('persondevice', persondevice, function (err) {
+                if(err)
+                res.json(500,err)
+                
+                else
+                res.json({"success":true})
+                 
+             });
+       
+});
+
+router.post('/persondevice/createdevice', function (req, res) {
    var obj = req.body.obj;
    var sequanceno ="";
    sequencedb.get('sequencenumberpersondevice',function(err,no)
