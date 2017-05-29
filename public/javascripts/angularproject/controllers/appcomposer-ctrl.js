@@ -1,6 +1,6 @@
 angular.module('app').controller('appcomposercontroller',
-    ['$scope', '$window', '$location','widgetResource', 'passingdataservice', 'appmanagementResource', 'dataService',
-        function ($scope, $window, $location, widgetResource, passingdataservice, appmanagementResource, dataService) {
+    ['$scope', '$window', '$location','widgetResource', 'passingdataservice', 'appmanagementResource', 'dataService', '$rootScope',
+        function ($scope, $window, $location, widgetResource, passingdataservice, appmanagementResource, dataService, $rootScope) {
             $scope.appmanagementobj={};
             var widgetresource = new widgetResource();
             var appmanagementresource = new appmanagementResource();
@@ -50,7 +50,11 @@ angular.module('app').controller('appcomposercontroller',
                 appmanagementresource.$create(function(data){
                     $window.alert("Data saved successfully");
                     console.log(data);
+
+                    //Reinit menu
+                    $rootScope.addedNewApp = true;
                 });
+
 
             }
 

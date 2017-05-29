@@ -1,6 +1,6 @@
 angular.module('app').controller('appmanagemetcontroller',
-    ['$scope','$location', 'appmanagementResource', 'passingdataservice',
-        function ($scope, $location, appmanagementResource, passingdataservice) {
+    ['$scope','$location', 'appmanagementResource', 'passingdataservice', '$rootScope',
+        function ($scope, $location, appmanagementResource, passingdataservice, $rootScope) {
             var appmanagementresource = new appmanagementResource();
             // var passingdataservice = new passingdataservice();
             $scope.PageList=[];
@@ -39,6 +39,9 @@ angular.module('app').controller('appmanagemetcontroller',
                     console.log(data);
                     if(data.success){
                         $scope.turnoffeditmode(obj);
+                        
+                        //Reinit menu
+                        $rootScope.addedNewApp = true;
                     }
                 });
             }
