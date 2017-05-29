@@ -34,8 +34,8 @@ angular.module('app').directive('wwaDashboard', ['$localStorage', 'widgetResourc
             {
                 widgetresource.$getAll({}, function (data) {
                     // console.log('widget loaded', data);
-                    scope.widgets = data.obj.obj;
-
+                    scope.widgets = data.obj.obj || [];
+                    
                 });
             }
 
