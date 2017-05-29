@@ -205,6 +205,38 @@ angular.module('app').factory('dataService',
                             controller: 'mvp-devicedialogcontroller'
                         }
                     }
+                },
+                {
+                    title: 'Person Device',
+                    settings: {
+                        sizeX: 5,
+                        sizeY: 3,
+                        minSizeX: 2,
+                        minSizeY: 2,
+                        template: '<mvppersondevice></mvppersondevice>',
+                        widgetSettings: {
+                            id: 5003,
+                            selectedfilter :"",
+                            templateUrl: '/javascripts/angularproject/dialog/mvp-persondevice/mvp-persondevice-dialog.html',
+                            controller: 'mvp-persondevicedialogcontroller'
+                        }
+                    }
+                },
+                {
+                    title: 'Person Location',
+                    settings: {
+                        sizeX: 5,
+                        sizeY: 3,
+                        minSizeX: 2,
+                        minSizeY: 2,
+                        template: '<mvppersonlocation></mvppersonlocation>',
+                        widgetSettings: {
+                            id: 5003,
+                            selectedfilter :"",
+                            templateUrl: '/javascripts/angularproject/dialog/mvp-personlocation/mvp-personlocation-dialog.html',
+                            controller: 'mvp-personlocationdialogcontroller'
+                        }
+                    }
                 }
             ];
 

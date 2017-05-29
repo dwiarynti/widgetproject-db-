@@ -7,7 +7,8 @@
         return $resource("/api/device/:action/:_id",
                { _id: '@_id' },
                {
-                 init: {method:'GET', params:{action:'getbysite'}}
-               })
+                 init: {method:'GET', params:{action:'getbysite'}},
+                 distinct: {method:'GET', params:{action:'distinct'}}
+               });
     }
 }());
