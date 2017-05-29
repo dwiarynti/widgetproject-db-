@@ -7,6 +7,7 @@ angular.module('app').controller('mpv-locationcontroller',
             // var selectedfilter = $scope.$parent.item.widgetSettings.selectedfilter;            
             $scope.getAllLocationSite = function(){
                 locationsiteresource.$init({_id:siteid}, function(data){
+                    console.log(data);                    
                     $scope.LocationList = data.obj;
                 });
             }
@@ -19,6 +20,7 @@ angular.module('app').controller('mpv-locationcontroller',
                 console.log(locationsiteresource);
                 
                 locationsiteresource.$filter({_id:siteid}, function(data){
+                    console.log(data);
                     $scope.LocationList = data.obj;
                 });
             }

@@ -8,5 +8,7 @@ angular.module('app').controller('mpv-devicecontroller',
                 // console.log(data.obj);
                 $scope.deviceList = data.obj;
             });
+
+
         }
     ]);
