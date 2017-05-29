@@ -4,10 +4,19 @@ angular.module('app').controller('mpv-devicecontroller',
             $scope.deviceList = [];
             var deviceresource = new deviceResource();
             var siteid = "001";
-            deviceresource.$init({_id:siteid}, function(data){
-                // console.log(data.obj);
-                $scope.deviceList = data.obj;
+            console.log($scope);
+
+
+            $scope.$watch(function () {
+                return $scope.$parent.item.widgetSettings.selectedfilter;
+            }, function () {
+                var selectedfilter = $scope.$parent.item.widgetSettings.selectedfilter;
+                deviceresource.devicename = selectedfilter != ""?selectedfilter:null;
+                deviceresource.$filter({_id:siteid}, function(data){
+                    $scope.deviceList = data.obj;
+                });
             });
+
 
 
         }

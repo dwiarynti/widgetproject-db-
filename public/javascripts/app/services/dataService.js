@@ -200,7 +200,7 @@ angular.module('app').factory('dataService',
                         template: '<mvpdevice></mvpdevice>',
                         widgetSettings: {
                             id: 5003,
-                            selectedfilter :"",
+                            selectedfilter :null,
                             templateUrl: '/javascripts/angularproject/dialog/mvp-device/mvp-device-dialog.html',
                             controller: 'mvp-devicedialogcontroller'
                         }
@@ -216,7 +216,7 @@ angular.module('app').factory('dataService',
                         template: '<mvppersondevice></mvppersondevice>',
                         widgetSettings: {
                             id: 5003,
-                            selectedfilter :"",
+                            selectedfilter :null,
                             templateUrl: '/javascripts/angularproject/dialog/mvp-persondevice/mvp-persondevice-dialog.html',
                             controller: 'mvp-persondevicedialogcontroller'
                         }
@@ -232,7 +232,7 @@ angular.module('app').factory('dataService',
                         template: '<mvppersonlocation></mvppersonlocation>',
                         widgetSettings: {
                             id: 5003,
-                            selectedfilter :"",
+                            selectedfilter :null,
                             templateUrl: '/javascripts/angularproject/dialog/mvp-personlocation/mvp-personlocation-dialog.html',
                             controller: 'mvp-personlocationdialogcontroller'
                         }
