@@ -16,7 +16,7 @@ var device = [
     {
         id:2,
         mac: 91290391022,
-        devicename:"B",
+        devicename:"A",
         siteid:"001"
         
     },
@@ -232,7 +232,7 @@ router.get('/device/distinct/:_id',function(req,res)
                     var result = [];
                     for(var a = 0; a <item.length;a++)
                     {
-                        if(result.indexOf(item[a].devicename === -1))
+                        if(result.indexOf(item[a].devicename) === -1)
                         {
                             result.push(item[a].devicename);
                         }
@@ -249,5 +249,96 @@ router.get('/device/distinct/:_id',function(req,res)
         }
     });
 
-})
+});
+
+router.get('/device/filter/:_id',function(req,res)
+{
+    var id = req.params._id;
+    var listitem = [];
+    var sitename = {};
+    var paramsdevicename = req.body.devicename;
+    sitedb.get('site',function(err,sites)
+    {
+        if(err) 
+        if(err.message == "Key not found in database")
+        {
+            res.json({"success": true, "message": "no data" , "obj": []});
+        }
+        else
+        {
+              res.json(500,err);
+        }
+        else
+        for(var i = 0 ; i < sites.length; i++)
+        {
+            var element = sites[i];
+            if(element.id == id)
+            sitename = element.sitename;
+        }
+        if(sitename != "")
+        {
+            devicedb.get('device',function(err,datadevice)
+            {
+                if(err) 
+                if(err.message == "Key not found in database")
+                {
+                    res.json({"success": true, "message": "no data" , "obj": []});
+                }
+                else
+                {
+                    res.json(500,err);
+                }
+               
+                 else
+                  var index = 0;
+                  var item = [];
+                
+                 for(var x = 0 ; x < datadevice.length; x++)
+                 {
+                    var element = datadevice[index];
+                    if(element != null)
+                    {
+                    if(element.siteid == id)
+                    {
+                        var obj =  {};
+                        
+                        obj.sitename = sitename;
+                        obj.id =element.id;
+                        obj.siteid = element.siteid;
+                        obj.mac = element.mac;
+                        obj.devicename = element.devicename;
+                        
+                        item.push(obj);
+                    }
+                    }
+                     index+=1;
+                 }
+                 if(index == datadevice.length)
+                 {
+                     var result = [];
+                     if(paramsdevicename != null)
+                     {
+                         for(var j = 0 ; j < item.length ; j++)
+                            {
+                                if(item[j].devicename == paramsdevicename)
+                                {
+                                    result.push(result[j]);
+                                }
+                            }
+                             res.json({"success":true,"obj": resultpersondevice});
+                     }
+                    res.json({"obj": item })
+                 }
+               
+
+            });
+        }
+        else
+        {
+            res.json(500,err);
+        }
+    });
+
+
+});
 module.exports = router;
